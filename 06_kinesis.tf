@@ -1,7 +1,7 @@
 
 # 1. Create an S3 bucket for delivery
 resource "aws_s3_bucket" "firehose_bucket" {
-  bucket = "my-firehose-bucket-example"
+  bucket        = "my-firehose-bucket-s3"
   force_destroy = true
 }
 
@@ -68,16 +68,16 @@ resource "aws_iam_role_policy" "firehose_s3_policy" {
 
 
 resource "aws_kinesis_firehose_delivery_stream" "direct-put-firehose" {
-  name        = "direct-put-firehose"
+  name        = var.kafka_topic_name
   destination = "extended_s3"
 
   extended_s3_configuration {
     role_arn   = aws_iam_role.firehose_role.arn
     bucket_arn = aws_s3_bucket.firehose_bucket.arn
 
-    buffering_size = 2
+    buffering_size     = 2
     buffering_interval = 120
-   
-}
+
+  }
 
 }

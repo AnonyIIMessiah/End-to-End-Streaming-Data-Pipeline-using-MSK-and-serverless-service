@@ -41,15 +41,15 @@ resource "aws_apigatewayv2_route" "post_route" {
 }
 
 resource "aws_apigatewayv2_integration" "sqs_integration" {
-  api_id             = aws_apigatewayv2_api.api_gateway.id
+  api_id              = aws_apigatewayv2_api.api_gateway.id
   integration_type    = "AWS_PROXY"
   integration_subtype = "SQS-SendMessage"
   # integration_uri    = aws_sqs_queue.terraform_queue.arn
   request_parameters = {
     "QueueUrl"    = aws_sqs_queue.terraform_queue.id
-    "MessageBody" = "$request.body.message"
+    "MessageBody" = "$request.body.MessageBody"
   }
-  credentials_arn = aws_iam_role.iam_for_api_gateway.arn
+  credentials_arn        = aws_iam_role.iam_for_api_gateway.arn
   payload_format_version = "1.0"
   timeout_milliseconds   = 10000
 

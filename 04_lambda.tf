@@ -12,6 +12,27 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
+resource "aws_security_group" "lambda_sg" {
+  name        = "lambda-sg"
+  description = "Security group for Lambda to access MSK"
+  vpc_id      = aws_vpc.project-01.id
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+}
+
+# resource "aws_security_group_rule" "lambda_to_msk" {
+#   type                     = "ingress"
+#   from_port                = 9092
+#   to_port                  = 9092
+#   protocol                 = "tcp"
+#   security_group_id        = aws_security_group.sg.id
+#   source_security_group_id = aws_security_group.lambda_sg.id
+# }
 
 
 resource "aws_iam_role" "iam_for_lambda" {
@@ -66,9 +87,9 @@ resource "aws_lambda_function" "kafka_producer" {
 
   vpc_config {
     subnet_ids         = [aws_subnet.Private-subnet-1.id, aws_subnet.Private-subnet-2.id]
-    security_group_ids = [aws_security_group.sg.id]
+    security_group_ids = [aws_security_group.lambda_sg.id]
   }
-  depends_on = [ aws_msk_cluster.lambda-project ]
+  depends_on = [aws_msk_cluster.lambda-project]
 }
 
 resource "aws_lambda_permission" "allow_sqs" {
@@ -79,12 +100,11 @@ resource "aws_lambda_permission" "allow_sqs" {
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
 resource "aws_lambda_event_source_mapping" "sqs_trigger" {
-  event_source_arn = aws_sqs_queue.terraform_queue.arn
-  function_name    = aws_lambda_function.kafka_producer.arn
-  batch_size       = 5
+  event_source_arn                   = aws_sqs_queue.terraform_queue.arn
+  function_name                      = aws_lambda_function.kafka_producer.arn
+  batch_size                         = 5
   maximum_batching_window_in_seconds = 2
-  
-  enabled          = true
+  enabled                            = true
 }
 
 
