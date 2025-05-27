@@ -21,7 +21,7 @@ resource "aws_security_group" "public_ec2_ssh" {
 }
 
 resource "aws_instance" "public_instance" {
-  ami                    = "ami-0af9569868786b23a"
+  ami                    = var.ami_id
   instance_type          = "t2.micro"
   key_name               = "temp-key"
   subnet_id              = aws_subnet.Public-subnet-1.id
@@ -73,7 +73,7 @@ resource "aws_security_group_rule" "ssh_from_public" {
 
 
 resource "aws_instance" "private_instance" {
-  ami                    = "ami-0af9569868786b23a"
+  ami                    = var.ami_id
   instance_type          = "t2.micro"
   key_name               = "temp-key"
   subnet_id              = aws_subnet.Private-subnet-1.id

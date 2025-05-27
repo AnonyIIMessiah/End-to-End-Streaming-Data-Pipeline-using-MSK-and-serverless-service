@@ -54,7 +54,7 @@ resource "aws_kms_key" "kms" {
 }
 
 resource "aws_msk_cluster" "lambda-project" {
-  cluster_name           = "lambda-project"
+  cluster_name           = var.msk_cluster_name
   kafka_version          = "3.2.0"
   number_of_broker_nodes = 2
 
