@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "kafka_producer" {
-  bucket = var.s3_consumer_bucket_name
+  bucket = var.s3_producer_bucket_name
 }
 
 resource "aws_s3_object" "object" {

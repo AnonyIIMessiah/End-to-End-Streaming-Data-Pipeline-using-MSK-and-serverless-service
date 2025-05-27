@@ -9,7 +9,7 @@ variable "msk_cluster_name" {
   default     = "lambda-project"
 }
 
-variable "s3_consumer_bucket_name" {
+variable "s3_producer_bucket_name" {
   description = "value of the S3 bucket name for the consumer"
   type        = string
   default     = "my-tf-kafka-producer"

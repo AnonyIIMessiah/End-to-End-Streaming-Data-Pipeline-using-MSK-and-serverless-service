@@ -45,7 +45,7 @@ resource "aws_glue_catalog_database" "demo-db" {
   name = "demo-db"
 }
 
-resource "aws_glue_crawler" "example" {
+resource "aws_glue_crawler" "demo_crawler" {
   database_name = aws_glue_catalog_database.demo-db.name
   name          = "demo-crawler"
   role          = aws_iam_role.iam_for_glue.name
