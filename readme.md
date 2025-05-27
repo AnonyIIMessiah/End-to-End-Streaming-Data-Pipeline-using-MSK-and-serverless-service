@@ -7,7 +7,7 @@ This project demonstrates the implementation of a fully-managed, serverless, **r
 
 ## 🧱 Architecture Overview
 
-![Architecture](assets/architecture.png.png)
+![Architecture](assets/architecture.png)
 
 This architecture follows a producer-consumer model with event-driven and serverless components to provide a scalable and cost-effective streaming pipeline.
 
