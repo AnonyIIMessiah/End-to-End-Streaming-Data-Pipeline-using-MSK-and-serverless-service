@@ -104,14 +104,6 @@ Once the pipeline is running:
 
 ---
 
-## 🧠 Future Enhancements
-
-- Add monitoring and alerts with CloudWatch
-- Add retry mechanism for failed Lambda executions
-- Extend to include streaming analytics with Amazon Kinesis Data Analytics
-- Include schema registry for Kafka
-
----
 
 
 ## 🙌 Acknowledgements
