@@ -7,7 +7,7 @@ This project demonstrates the implementation of a fully-managed, serverless, **r
 
 ## 🧱 Architecture Overview
 
-![Architecture](Project-1.drawio%20(1).png)
+![Architecture](assets/architecture.png.png)
 
 This architecture follows a producer-consumer model with event-driven and serverless components to provide a scalable and cost-effective streaming pipeline.
 
@@ -44,8 +44,7 @@ This architecture follows a producer-consumer model with event-driven and server
 
 ```
 .
-├── lambda_producer/           # Kafka producer Lambda
-├── lambda_consumer/           # Kafka consumer Lambda
+├── extra_files/           # contains python code for Kafka producer Lambda and Kafka consumer Lambda
 ├── terraform/                 # All IaC for MSK, SQS, API Gateway, Lambda, etc.
 ├── assets/                    # Architecture diagrams and images
 └── README.md                  # Project documentation
@@ -97,7 +96,7 @@ Once the pipeline is running:
 
 ## 📌 Key Features
 
-- Fully serverless (no EC2-based Kafka clients)
+- Fully serverless 
 - Uses managed Kafka (Amazon MSK)
 - End-to-end provisioning with Terraform
 - Real-time data ingestion and querying

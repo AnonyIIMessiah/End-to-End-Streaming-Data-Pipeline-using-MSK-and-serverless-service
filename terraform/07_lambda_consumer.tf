@@ -45,12 +45,12 @@ resource "aws_iam_role_policy_attachment" "kinesis_firehose_access" {
 
 data "archive_file" "lambda_consumer" {
   type        = "zip"
-  source_file = "extra_files/lambda_consumer.py"
-  output_path = "extra_files/lambda_consumer.zip"
+  source_file = "../extra_files/lambda_consumer.py"
+  output_path = "../extra_files/lambda_consumer.zip"
 }
 
 resource "aws_lambda_function" "kafka_consumer" {
-  filename         = "extra_files/lambda_consumer.zip"
+  filename         = "../extra_files/lambda_consumer.zip"
   function_name    = "KafkaConsumerFunction"
   role             = aws_iam_role.iam_for_lambda_consumer.arn
   handler          = "lambda_consumer.lambda_handler"

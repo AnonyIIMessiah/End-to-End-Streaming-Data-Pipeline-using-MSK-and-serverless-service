@@ -64,12 +64,12 @@ resource "aws_iam_role_policy_attachment" "msk_access" {
 
 data "archive_file" "lambda" {
   type        = "zip"
-  source_file = "extra_files/lambda_producer.py"
-  output_path = "extra_files/lambda_producer.zip"
+  source_file = "../extra_files/lambda_producer.py"
+  output_path = "../extra_files/lambda_producer.zip"
 }
 
 resource "aws_lambda_function" "kafka_producer" {
-  filename         = "extra_files/lambda_producer.zip"
+  filename         = "../extra_files/lambda_producer.zip"
   function_name    = "KafkaProducerFunction"
   role             = aws_iam_role.iam_for_lambda.arn
   handler          = "lambda_producer.lambda_handler"

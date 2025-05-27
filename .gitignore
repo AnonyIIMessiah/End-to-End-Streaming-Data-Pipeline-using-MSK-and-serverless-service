@@ -1,6 +1,11 @@
 .terraform
 .terraform/*
 .terraform.lock.hcl
+*/.terraform
+*/.terraform/*
+*/.terraform.lock.hcl
 extra_files/*.zip
+*/*.tfstate
+*/*.tfstate.*
 *.tfstate
 *.tfstate.*
