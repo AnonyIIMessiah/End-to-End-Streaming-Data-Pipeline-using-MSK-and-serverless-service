@@ -21,12 +21,12 @@ resource "aws_security_group" "public_ec2_ssh" {
 }
 
 resource "aws_instance" "public_instance" {
-  ami             = "ami-0af9569868786b23a"
-  instance_type   = "t2.micro"
-  key_name        = "temp-key"
-  subnet_id       = aws_subnet.Public-subnet-1.id
-  vpc_security_group_ids       = [aws_security_group.public_ec2_ssh.id]
-  
+  ami                    = "ami-0af9569868786b23a"
+  instance_type          = "t2.micro"
+  key_name               = "temp-key"
+  subnet_id              = aws_subnet.Public-subnet-1.id
+  vpc_security_group_ids = [aws_security_group.public_ec2_ssh.id]
+
 }
 
 # Private EC2 Instance
@@ -73,12 +73,12 @@ resource "aws_security_group_rule" "ssh_from_public" {
 
 
 resource "aws_instance" "private_instance" {
-  ami             = "ami-0af9569868786b23a"
-  instance_type   = "t2.micro"
-  key_name        = "temp-key"
-  subnet_id       = aws_subnet.Private-subnet-1.id
-  vpc_security_group_ids       = [aws_security_group.private_ec2.id]
-user_data = <<EOF
+  ami                    = "ami-0af9569868786b23a"
+  instance_type          = "t2.micro"
+  key_name               = "temp-key"
+  subnet_id              = aws_subnet.Private-subnet-1.id
+  vpc_security_group_ids = [aws_security_group.private_ec2.id]
+  user_data              = <<EOF
 #!/bin/bash
 yum install -y java-1.8.0-openjdk wget nc
 
