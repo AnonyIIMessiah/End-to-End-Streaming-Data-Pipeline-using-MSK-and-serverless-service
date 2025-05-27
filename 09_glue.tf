@@ -57,5 +57,5 @@ resource "aws_glue_crawler" "example" {
   schedule = "cron(0 * * * ? *)" # Every hour
 
 
-  depends_on = [ aws_s3_bucket.firehose_bucket ]
+  depends_on = [aws_s3_bucket.firehose_bucket]
 }
