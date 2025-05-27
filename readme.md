@@ -44,10 +44,10 @@ This architecture follows a producer-consumer model with event-driven and server
 
 ```
 .
-├── extra_files/           # contains python code for Kafka producer Lambda and Kafka consumer Lambda
-├── terraform/                 # All IaC for MSK, SQS, API Gateway, Lambda, etc.
-├── assets/                    # Architecture diagrams and images
-└── README.md                  # Project documentation
+├── extra_files/             # contains python code for Kafka producer Lambda and Kafka consumer Lambda
+├── terraform/               # All IaC for MSK, SQS, API Gateway, Lambda, etc.
+├── assets/                  # Architecture diagrams and images
+└── README.md                # Project documentation
 ```
 
 ---
